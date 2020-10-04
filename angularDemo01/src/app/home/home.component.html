@@ -1,0 +1,47 @@
+<h3>Home component</h3>
+<p>this is our top product</p>
+<app-product-overview [product]="topProductForHome"></app-product-overview>
+
+<h2>Directive</h2>
+<p>
+  directive is a marker we add to html to extend the functionality of existing html element
+  something similar to component without the view （for angular2+）
+
+  angularJs directive:
+</p>
+<ol>
+  <li>Structural Directive eg. *ngFor
+    will modify the DOM
+    change the DOM layout by adding and removing DOM elements.
+  </li>
+  <li>Attribute directive eg. routerLink, ngModel
+    will change the appearance or behavior of an element, component, or another directiv
+  </li>
+</ol>
+<hr>
+<h4> attribute directive: </h4>
+<input type="text" [(ngModel)]="data">
+<p [ngClass]="data">some text </p>
+<p [class]="data"> some other text</p>
+<p [ngClass]="{'text-danger': data === 'danger','text-info': data === 'info'}"> magic</p>
+<p [ngStyle]="{'background-color': data === 'danger' ? 'red': 'yellow'}"> magic styling</p>
+
+<h4> structural directive: </h4>
+<input type="checkbox" [(ngModel)]="isAuthenticated">
+<p *ngIf="!isAuthenticated">login</p>
+<!-- *ngIf:  * is a syntax sugar -->
+<!--compiled version-->
+<ng-template [ngIf]="!isAuthenticated">
+<p>login</p>
+</ng-template>
+<p *ngIf="isAuthenticated">logout</p>
+
+<!--angular 6 ngIf else-->
+<p *ngIf="isAuthenticated; else logoutTemplate">logout</p>
+<ng-template #logoutTemplate>
+  <p>logout</p>
+</ng-template>
+
+<p appMyShow="isAuthenticated"> new Login</p>
+
+
