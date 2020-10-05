@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+<!--      <li class="nav-item">-->
+<!--        <a routerLink="/home" class="nav-link">Home</a>-->
+<!--      </li>-->
+      <li class="nav-item">
+        <a routerLink="/home" class="nav-link" routerLinkActive="active-link">GotoHome</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/products" class="nav-link" routerLinkActive="active-link">Products</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/prime" class="nav-link" routerLinkActive="active-link">Prime</a>
+      </li>
+
+    </ul>
+    <ul class="ml-auto navbar-nav" >
+      <li class="nav-item">
+        <a *ngIf="!user" routerLink="/login" class="nav-link" routerLinkActive="active-link">Login</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="user" (click)="logout()" class="nav-link" routerLinkActive="active-link">Log out</a>
+      </li>
+    </ul>
+  </div>
+</nav>

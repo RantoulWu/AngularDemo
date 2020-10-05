@@ -1,0 +1,25 @@
+<main class="container" style="margin-top: 10px;">
+  <mat-card fxFlex="100%" fxFlex.gt-xs="60%" fxFlexOffset.gt-sm="20%">
+    <mat-card-title>Login</mat-card-title>
+    <!-- when angular sees form tag, it will add a ngForm directive automatically
+      which will prevent the page from being reloaded
+
+      Template-driven form, ngModel + name to let angular take control
+     -->
+    <form ngForm fxLayout="column" #loginForm="ngForm" (ngSubmit)="handleSubmit(loginForm)">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" ngModel name="username" required>
+        <mat-error>Username cannot be empty</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" minlength="6" ngModel name="password">
+        <mat-error>Your password has to be no less than 6 characters long</mat-error>
+      </mat-form-field>
+      <div>
+        <button [disabled]="loginForm.invalid" mat-raised-button color="primary" type="submit">Login</button> &nbsp;
+        <a mat-button color="accent" routerLink="/register">Register</a>
+      </div>
+      <p>{{loginForm.touched}}</p>
+    </form>
+  </mat-card>
+</main>
