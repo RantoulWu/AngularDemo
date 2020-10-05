@@ -1,0 +1,38 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>Register</mat-card-title>
+    <!-- reactive forms relies on ReactiveFormsModule -->
+    <form fxLayout="column" [formGroup]="registerFormGroup">
+      <mat-form-field>
+        <mat-placeholder>Username</mat-placeholder>
+        <!--        <input type="text" matInput [formControl]="ufc">-->
+        <input type="text" matInput formControlName="username">
+        <mat-error
+          *ngIf="registerFormGroup.get('username').getError('required')"
+        >Username can't be empty</mat-error>
+        <mat-error
+          *ngIf="registerFormGroup.get('username').getError('minlength')"
+        >Username has to be no less than 3 characters long</mat-error>
+      </mat-form-field>
+      <div fxLayout="column" formGroupName="password_group">
+        <mat-form-field>
+          <mat-placeholder>Password</mat-placeholder>
+          <!--          <input type="password" matInput [formControl]="pfc">-->
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-placeholder>Confirm Password</mat-placeholder>
+          <!--          <input type="password" matInput [formControl]="cpfc">-->
+          <input type="password" matInput formControlName="confirm_password">
+        </mat-form-field>
+        <mat-error>
+          {{registerFormGroup.get('password_group').getError('passwordsNotMatch')}}
+        </mat-error>
+      </div>
+      <p>
+        <button type="submit" mat-raised-button color="primary">Register</button>
+      </p>
+      <p>{{registerFormGroup.value | json}}</p>
+    </form>
+  </mat-card>
+</div>

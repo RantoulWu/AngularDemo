@@ -1,0 +1,16 @@
+
+<a [routerLink]="['/product-detail',product.id]" *ngIf="product">
+  <div>
+    <img src="{{product.image}}" width="200" height="160">
+  </div>
+  <div class="products-list-item-price">
+    {{product.price | currencyExchange: cs.currencyCode | currency: cs.currencyCode}}
+  </div>
+  <div class="products-list-item-name products-list-item-text text-danger">
+    {{product.name}}
+  </div>
+  <div class="products-list-item-brand products-list-item-text red-text big-text">
+    {{product.brand | uppercase}}
+  </div>
+</a>
+

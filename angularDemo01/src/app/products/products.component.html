@@ -1,0 +1,46 @@
+<h2>Products</h2>
+<hr>
+<!--<div>-->
+<!--  <input  class="d-inline bg-light" style="margin-right: 30px" type="text" [(ngModel)]="minRange">-->
+<!--  <input  class="d-inline bg-light" type="text" [(ngModel)]="maxRange">-->
+<!--</div>-->
+
+<main class="products-container">
+  <section class="products-filter-section">
+    <label>
+      name <input type="text" class="form-control" [value]="inputName" (input)="updateName($event)">
+    </label>
+    <select name="" [(ngModel)]="cs.currencyCode" class="form-control">
+      <option value="USD">US Dollar</option>
+      <option value="CNY">Chinese Yuan</option>
+      <option value="JPY">Japanese Yuan</option>
+    </select>
+    <label>
+      Min <input type="number" class="form-control" [value]="minRange" (input)="updateMin($event)">
+    </label>
+    <label>
+      Max <input type="number" class="form-control"  [(ngModel)]="maxRange">
+
+<!--      Max <input type="number" class="form-control"  [value]="maxRange" (input)="updateMax($event)">-->
+    </label>
+    <button (click)="addProduct()">Click to Add </button>
+  </section>
+  <section class="products-list-section">
+    <div class="products-list-container">
+<!--   **important！！  parent child component communication
+in parent template, use attribute binding to pass data to child
+that is : create new attribute in the child tag in parent component's template html file
+-->
+<!--      ng-container will create wrapper in the template only
+          allowing us to apply additional structural directives
+          wrapper will not be created in DOM tree-->
+    <ng-container *ngIf="products">
+     <app-product-overview *ngFor="let curP of products | filterName: inputName |priceRange: minRange: maxRange" [product]="curP">
+     </app-product-overview>
+    </ng-container>
+    </div>
+
+  </section>
+</main>
+
+

@@ -1,0 +1,27 @@
+<p>product detail</p>
+<div class="container-fluid">
+  <div class="row product-detail-container" *ngIf="product">
+    <div class="col-sm-9">
+      <div class="product-detail-title">
+        <h1>{{product.name}}</h1>
+      </div>
+      <div class="product-detail-image-container text-center">
+        <img src="{{product.image}}" class="product-detail-image">
+      </div>
+    </div>
+    <div class="col-sm-3 product-detail-info-container">
+      <div class="product-detail-info-price">
+        {{product.price | currency}}
+      </div>
+      <div class="product-detail-info-brand">
+        Sold by {{product.brand}}
+      </div>
+      <div class="product-detail-info-cart-button-container">
+        <span>
+          <button class="btn btn-primary btn-block">ADD TO CART</button>
+          <button class="btn btn-primary btn-block" (click)="showNext($event)">TO NEXT </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

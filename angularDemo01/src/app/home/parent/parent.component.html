@@ -1,0 +1,14 @@
+<p>parent works!</p>
+
+<section style="border: 2px dashed; padding: 15px">
+ <ng-content  select=".text-warning"></ng-content>
+  <p #ptag>Data from child:{{dataFromChild}}</p>
+
+<!--  in parent template, we can use event binding to receive data  passed from child-->
+
+<!--  1. use a call back function recommended way, should always use this way!-->
+<!--  2. create an instance variable of
+event directly ==> not recommended at all, always use callback function!! -->
+  <app-child (emitData)="handleEmittedData($event)"></app-child>
+ <ng-content></ng-content>
+</section>
